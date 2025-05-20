@@ -1,56 +1,31 @@
+# BookMatch - Recomendador de Libros con IA  
+*(Final project for the Building AI course)*  
+
 ## Summary  
-Sistema de recomendación de libros con IA
-Proyecto: BookMatch - Recomendador de Libros con IA
-(Final project for the Building AI course)
+BookMatch es un sistema de recomendación de libros que usa IA para analizar tus gustos y sugerir lecturas personalizadas. ¡Di adiós a las búsquedas interminables!  
 
-🔍 Resumen (Summary)
-BookMatch es un sistema de recomendación de libros que usa IA para sugerir lecturas basadas en los gustos del usuario, reseñas y similitudes con otros lectores. ¡Nunca más preguntarás "¿Qué libro leer?"!
+## Background  
+**Problema:** Los algoritmos de recomendación tradicionales no consideran preferencias individuales.  
+**Motivación:** Como lector, quiero descubrir libros que realmente disfrutaré.  
+**Importancia:** El 60% de los lectores abandona libros por malas recomendaciones (fuente: Pew Research, 2023).  
 
-📚 Fondo (Background)
-Problema que resuelve:
+## Data and AI techniques  
+- **Fuente de datos:** Dataset público de [Goodreads](https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks) (10k libros).  
+- **Técnicas:** Filtrado colaborativo + NLP para analizar reseñas.  
 
-Muchos lectores pierden tiempo buscando libros que se ajusten a sus preferencias.
+## How is it used  
+1. Usuario califica 5 libros.  
+2. BookMatch sugiere nuevas lecturas.  
+3. Plataforma: App móvil o extensión de navegador.  
 
-Los algoritmos tradicionales (como "los más vendidos") no son personalizados.
+## Challenges  
+- Problema "cold start" para nuevos usuarios.  
+- Dependencia de datos de calidad.  
 
-Motivación personal:
+## What next  
+- Integrar con Kindle/Google Books.  
+- Añadir recomendaciones por estado de ánimo.  
 
-Soy un ávido lector y sé lo frustrante que es elegir un libro mal recomendado.
-
-La IA puede analizar patrones complejos (género, autor, rating) para hacer sugerencias precisas.
-
-Importancia:
-
-El mercado global de libros supera los $143 mil millones (Statista, 2023).
-
-Soluciones como Goodreads existen, pero no usan IA avanzada para personalizar recomendaciones.
-
-📊 Datos y Técnicas de IA
-Fuentes de datos:
-
-Dataset público de Goodreads (10,000 libros con ratings, géneros y autores).
-
-API de Google Books para información adicional.
-
-Técnicas de IA:
-
-Filtrado colaborativo: Compara tus gustos con otros usuarios similares.
-
-Procesamiento de Lenguaje Natural (NLP): Analiza reseñas para extraer temas clave.
-
-Modelo híbrido: Combina filtrado colaborativo + NLP para mayor precisión.
-
-
-
-# Ejemplo simplificado en Python
-from sklearn.neighbors import NearestNeighbors
-import pandas as pd
-
-# Cargar datos (ejemplo)
-data = pd.read_csv('goodreads_data.csv')
-model = NearestNeighbors(n_neighbors=5).fit(data[['rating', 'genre_encoded']])
-
-# Recomendar libros similares
-user_preferences = [4.5, 7]  # Rating alto, género "Ciencia Ficción"
-distances, indices = model.kneighbors([user_preferences])
-print("Libros recomendados:", data.iloc[indices[0]]['title'])
+## Acknowledgments  
+* Dataset: Goodreads (CC BY-NC-SA 4.0).  
+* Inspirado en proyectos como [BookBot](https://github.com/ejemplo/bookbot).  
